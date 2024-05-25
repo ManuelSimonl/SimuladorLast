@@ -28,7 +28,7 @@ public class Individuo {
     // Generar aleatoriamente los turnos de vida
     private int generarTurnosDeVida() {
         Random random = new Random();
-        return random.nextInt(10) + 1; // Turnos de vida entre 1 y 10
+        return random.nextInt(10) + 5; // Turnos de vida entre 1 y 10
     }
 
     // Método para disminuir un turno de vida

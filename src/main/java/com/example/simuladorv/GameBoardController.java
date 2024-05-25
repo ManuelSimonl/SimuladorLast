@@ -465,10 +465,6 @@ public class GameBoardController {
 
 
     // Método para eliminar un individuo de la lista de individuos
-    private void eliminarIndividuo(Individuo individuo) {
-        individuos.remove(individuo);
-        // También puedes realizar otras acciones necesarias después de eliminar el individuo
-    }
     private void moverIndividuosAutomaticamente() {
         // Crear una copia de la lista individuos
         List<Individuo> copiaIndividuos = new ArrayList<>(individuos);
@@ -494,8 +490,26 @@ public class GameBoardController {
             } else {
                 // Eliminar individuo si ha alcanzado el fin de sus turnos de vida
                 eliminarIndividuo(individuo);
+                // Actualizar la vista del tablero después de eliminar el individuo
+                actualizarVistaGridPanel();
             }
         }
+    }
+
+    // Método para eliminar un individuo de la lista de individuos
+    private void eliminarIndividuo(Individuo individuo) {
+        individuos.remove(individuo);
+    }
+    private void actualizarVistaGridPanel() {
+        // Eliminar los nodos (Labels) que representan individuos del GridPane
+        for (Individuo individuo : individuos) {
+            // Obtener el nodo asociado al individuo
+            Label cellLabel = individuoLabels.get(individuo);
+            if (cellLabel != null) {
+                gameGridPane.getChildren().remove(cellLabel);
+            }
+        }
+
     }
 
 
